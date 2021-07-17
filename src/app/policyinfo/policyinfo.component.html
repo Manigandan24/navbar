@@ -1,0 +1,101 @@
+<div class=policyinfo>
+    <form [formGroup]="policyInfoForm" (ngSubmit)=onSubmit()>
+        <div class="form-group">
+            <mat-label for="sel" class="_label">Reason</mat-label>
+            <mat-form-field>
+                <mat-select formControlName="reason" id="sel" appearance=outline>
+                    <mat-option [value]=0>None</mat-option>
+                    <mat-option *ngFor="let reason of reasonCodes" [value]="reason.id">
+                        {{reason.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for=sel class="_label">LineOfBusiness</mat-label>
+            <mat-form-field>
+                <mat-select formControlName="lineOfBusiness" appearance=outline>
+                    <mat-option [value]=0>None</mat-option>
+                    <mat-option *ngFor="let lobitem of lob" [value]="lobitem.id">
+                        {{lobitem.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for=sel class="_label">Policy Type</mat-label>
+            <mat-form-field>
+                <div id="sel">
+                    <mat-select formControlName="policyType" appearance=outline>
+                        <mat-option [value]=0>None</mat-option>
+                        <mat-option *ngFor="let policyTypeitem of policyTypes" [value]="policyTypeitem.id">
+                            {{policyTypeitem.value}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for=sel class="_label">Rate State</mat-label>
+            <mat-form-field>
+                <div id="sel">
+                    <mat-select formControlName="rateState" appearance=outline>
+                        <mat-option [value]=0>None</mat-option>
+                        <mat-option *ngFor="let rateStateitem of rateStates" [value]="rateStateitem.id">
+                            {{rateStateitem.value}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for=sel class="_label">Company</mat-label>
+            <mat-form-field>
+                <div id="sel">
+                    <mat-select formControlName="company" appearance=outline>
+                        <mat-option [value]=0>None</mat-option>
+                        <mat-option *ngFor="let companyitem of companieCodes
+                        " [value]="companyitem.id">
+                            {{companyitem.value}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for="textbox" class="_label">PolicyNumber</mat-label>
+                <mat-form-field floatLabel="never"> 
+                    <input matInput id="textbox1" formControlName="policyNumber" placeholder="PolicyNumber" maxlength="15" size="20">
+                </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for="textbox" class="_label">Effective Date</mat-label>
+            <mat-form-field floatLabel="never" class="mat-field">
+                <input matInput id="datefield" (focus)="picker.open()" formControlName="policyEffectiveDate" [matDatepicker] = "picker" placeholder = "mm/dd/yyyy">
+                <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for="textbox" class="_label">Company Code</mat-label>
+            <mat-form-field>
+                <input type=text matInput id="textbox1" formControlName="companyCode" maxlength="15" size="20">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-label for="textbox" class="_label">Pay Plan</mat-label>
+            <mat-form-field>
+                <input type=text matInput id="textbox1" formControlName="payPlan" maxlength="15" size="20">
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="m-1 btn btn-light btn-outline-primary">Save</button>
+            <div style="padding: 8px"></div>
+            <button type="submit" class="btn btn-light">&laquo; Previous</button>
+            <div style="padding: 8px"></div>
+            <button type="submit" class="btn btn-primary" (click)=next()>Next &raquo;</button>
+        </div>
+        <div class="form-group"></div>
+    </form>
+</div>

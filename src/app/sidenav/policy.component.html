@@ -1,0 +1,82 @@
+<!-- <div class=container>
+    
+    <div class="floatleft">
+        <div class=sidenav>
+            <span class="searchcls" [ngClass]="classStyler" (click)=enableSearchPolicy()>Search</span>
+            <a [ngClass]="classStyler" on-click=enableViewPolicy()>Create/Edit</a>
+        </div>
+    </div>
+
+
+            <mat-sidenav-container>
+                <mat-sidenav opened mode="side" [fixedInViewport]="true" fixedTopGap=40>
+                    <mat-nav-list>
+                        <span mat-list-item class="searchcls" [ngClass]="classStyler"
+                            (click)=enableSearchPolicy()>Search</span>
+                        <a mat-list-item [ngClass]="classStyler" on-click=enableViewPolicy()>Create/Edit</a>
+                    </mat-nav-list>
+                </mat-sidenav>
+            </mat-sidenav-container>
+
+    <div class="floatright" *ngIf="searchPolicy">
+        <div>
+            <form #policyForm="ngForm" (ngSubmit)="onSubmit(policyForm)">
+
+                <input type=text placeholder="Enter policy number" name="policynumber" [(ngModel)]=policynumber>
+                <button type="submit">Search</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="floatright" *ngIf="viewPolicy">
+        <div>
+            <form #policyForm="ngForm" (ngSubmit)="onSubmit(policyForm)">
+
+                <input type=text placeholder="Enter policy number" name="policynumber" [(ngModel)]=policynumber>
+                <button type="submit">View</button>
+
+            </form>
+        </div>
+    </div>
+
+</div> -->
+
+    <mat-sidenav-container autosize="true">
+        <mat-sidenav opened mode="side" fixedViewTopGap=40px>
+            <mat-nav-list>
+                <a mat-list-item [ngClass]="{'search':classStyler.search}" (click)=enableSearchPolicy()>Search</a>
+                <app-menu-list [ngClass]="{'view':classStyler.view}" *ngFor="let item of sideNavItems;index as i" [item]="item" [i]="i"
+                    (click)=enableViewPolicy()></app-menu-list>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content *ngIf="searchPolicy">
+            <form #policyForm="ngForm" (ngSubmit)="onSubmit(policyForm)">
+                <div class=policy>
+                    <div class='policynumber'>
+                        <input class="policynumber" placeholder="Enter policy number" name="policynumber"
+                            [(ngModel)]=policynumber maxlength="15" size="20">
+                    </div>
+                    <div class='submit'>
+                        <button mat-raised-button color="primary" type="submit">Search</button>
+                    </div>
+
+                    <div class=vieweditbtn>
+                        <div>{{policystatus}}</div>
+                        <div class=viewbtn *ngIf="policyExists">
+                            <button mat-raised-button color="primary" (click)="viewpolicydetails()">View</button>
+                        </div>
+                        <div class=editbtn *ngIf="policyExists && isAdmin">
+                            <button mat-raised-button color="primary" (click)="editpolicydetails()">Edit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </mat-sidenav-content>
+        <mat-sidenav-content *ngIf="!searchPolicy">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>

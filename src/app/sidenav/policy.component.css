@@ -1,0 +1,148 @@
+body{
+  margin: 0;
+}
+
+.container{
+  width: 100%;
+  min-width: 100%;
+
+  height: 100%;
+  min-height: 100%;
+}
+
+.sidenav {
+
+    width: 200px;
+    min-width: 200px;
+    height: 100%;
+    min-height: 100%;
+    top: 50px;
+    left: 0;
+    background-color : dodgerblue;
+    overflow-x: scroll;
+  }
+
+  .sidenav a,span.searchcls{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    color:white;
+    display: block;
+  }
+
+  a.search {
+    background-color:red;
+    color: hotpink;
+  }
+  
+  a.view {
+    background-color:red;
+    color: hotpink;
+  }
+
+  .sidenav a:hover,span.searchcls:hover {
+    color: black;
+    cursor: pointer; 
+  }
+
+
+.floatright {
+  float:right;
+  height: 100%;
+  min-height: 100%;
+  top: 50px;
+  background-color:white;
+  border-style: solid; 
+  box-sizing: border-box;
+  border-width: thin;
+  background-color: azure
+}
+
+
+/** css for mat-sidenav
+  * mat 
+*/
+
+mat-sidenav {
+  width: 250px;
+  background-color: dodgerblue;
+
+  height: 100%;
+  min-height: 100%;
+}
+
+.mat-drawer-content{
+  width: 1116px;
+  min-width: 1116px;
+
+  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.mat-drawer-content::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #F5F5F5;
+}
+
+.mat-drawer-content::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.mat-drawer-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: green
+}
+
+mat-sidenav-container {
+  height: 100%;
+  min-height: 100%;
+  
+  width: 1366px;
+  min-width: 1366px;
+  background-color: lightblue;
+  overflow-x: hidden;
+}
+
+.policy{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 50vh;
+}
+
+.vieweditbtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 10vh;
+}
+
+.policynumber{
+  margin: 10px;
+  padding: 1px;
+}
+
+.submit{
+  margin: 20px;
+  padding: 5x;
+}
+
+.inputpolicynumber{
+  height: 18px;
+}
+				
+.viewbtn, .editbtn{
+  margin: 20px;
+  padding: 5px;
+}
+
+/*
+@media screen and (max-width: 800px) {
+  mat-sidenav-container{ height: 100%;min-height: 100%; }
+}*/

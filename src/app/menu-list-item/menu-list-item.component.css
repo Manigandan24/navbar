@@ -1,0 +1,17 @@
+.mat-list-item.active0 {
+    background-color: red;
+}
+
+.mat-list-item.active1 {
+    background-color: red;
+}
+
+.mat-list-base .mat-list-item .active {
+    background-color: red;
+
+}
+
+
+a .active {
+    background-color: red;
+}

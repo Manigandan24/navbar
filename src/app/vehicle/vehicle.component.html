@@ -1,0 +1,58 @@
+<div class="vehicledetails container">
+    <form [formGroup]="vehicleDetailsForm" (ngSubmit)="onSubmit(vehicleDetailsForm.value)">
+        <div formArrayName="vehicleDetailsArray">
+            <div style="padding: 8px"></div>
+            <button class="btn btn-primary" style="margin-right: 10px;" (click)="addVehicleDetails()">Add</button>
+            <button  class="btn btn-primary" (click)="removeSelectVehicle()">Remove</button>
+            <div style="padding: 8px"></div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center"><mat-checkbox (change)=selectAll($event) [checked]=thSelected></mat-checkbox></th>
+                        <th>#</th>
+                        <th>Vehicle Type</th>
+                        <th>Supplemental Vehicle</th>
+                        <th>Vin</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th >Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [formGroupName]="vehIndex"
+                        *ngFor="let vehicleDetail of vehicleDetails().controls; let vehIndex=index;">
+                        <td>
+                            <p class=index><mat-checkbox (change)="setCurrIndex($event,vehIndex)" formControlName=checked [checked]=multiselect></mat-checkbox></p>
+                        </td>
+                        <td><input class=vehindex type=number formControlName="vehicleId" maxlength="3" size="3" [ngModel]="vehIndex" disabled></td>
+                        <td>
+                            <mat-form-field>
+                                <mat-select formControlName="vehicleType">
+                                    <mat-option [value]=0>None</mat-option>
+                                    <mat-option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType.id">
+                                        {{vehicleType.value}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <p class=index><mat-checkbox formControlName="supplementalVehicle" style="color: red"></mat-checkbox></p>
+                        </td>
+                        <td>
+                            <input id="vin" formControlName="vin" placeholder="vin" maxlength="15" size="20">
+                        </td>
+                        <td>
+                            <input id="make" formControlName="make" placeholder="make" maxlength="8" size="10">
+                        </td>
+                        <td>
+                            <input id="model" formControlName="model" placeholder="model" maxlength="8" size="10">
+                        </td>
+                        <td>
+                            <input id="year" type="number" formControlName="year" placeholder="year" maxlength="8" size="10">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

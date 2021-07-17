@@ -1,0 +1,49 @@
+<!--<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div id=login>
+        <div id=username>
+            <input type=text name=user id=user placeholder="Enter Username" formControlName=userName>
+        </div>
+        <div *ngIf="!userName?.valid && (userName?.dirty ||userName?.touched)">
+            <div [hidden]="!userName.errors.required" style="color: red;">
+                UserName is required
+            </div>
+        </div>
+        <div id=password>
+            <input type=password name=pass id=pass placeholder="Enter Password" formControlName=password>
+        </div>
+        <div id=confirmPass>
+            <input type=password name=confirmpass id=confirmpass placeholder="Confirm Password"
+                formControlName=confirmPassword>
+        </div>
+
+        <div *ngIf="!loginForm.valid && (loginForm.dirty ||loginForm.touched) && !password.errors?.required && !confirmPassword.errors?.required">
+            <div [hidden]="!loginForm.errors?.matchpass" style="color: red;">
+                {{loginForm.errors?.requiredval}}
+            </div>
+        </div>
+       
+        <div id=submit>
+            <button type="submit" name=submit id=submit>Login</button>
+        </div>
+    </div>
+</form>-->
+
+<div id=login>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+            <mat-icon>account_circle</mat-icon>
+            <mat-form-field class="full-width-input">
+                <input matInput type=text placeholder="Enter Username" formControlName=userName required>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput type=password name=pass id=pass placeholder="Enter Password" formControlName=password>
+            </mat-form-field>
+            <button type=submit mat-raised-button color="primary" >Login</button>
+            <mat-error *ngIf="loginInvalid">
+                The username and password were not recognized
+            </mat-error>
+        </form>
+    </mat-card-content>
+</mat-card>
+</div>

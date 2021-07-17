@@ -1,0 +1,106 @@
+<div class=container>
+    <form [formGroup]="namedInsuredForm" (ngSubmit)=onSubmit()>
+        <h1 class=space>Named Insured</h1>
+        <div class="namedinsured">
+            <div class="nigroup">
+                <mat-label for="prefixtext" class=space>Prefix</mat-label>
+                <mat-form-field>
+                    <input type=text class=textbox matInput formControlName="prefix" maxlength="5" size="7">
+                </mat-form-field>
+            </div>
+            <div class="nigroup">
+                <mat-label for="firstnametext" class=space>First Name</mat-label>
+                <mat-form-field>
+                    <input type=text class=textbox matInput formControlName="firstName" maxlength="15" size="20">
+                </mat-form-field>
+            </div>
+            <div class="nigroup">
+                <mat-label for="lastnametext" class=space>Last Name</mat-label>
+                <mat-form-field>
+                    <input type=text class=textbox matInput formControlName="lastName" maxlength="15" size="20">
+                </mat-form-field>
+            </div>
+            <div class="nigroup">
+                <mat-label for="middlenametext" class=space>Middle Name</mat-label>
+                <mat-form-field>
+                    <input type=text class=textbox matInput formControlName="middleName" maxlength="15"
+                        size="20">
+                </mat-form-field>
+            </div>
+            <div class="nigroup">
+                <mat-label for="dobtext" class=space>DateOfBirth</mat-label>
+                <mat-form-field floatLabel="never" class="datefield">
+                    <input matInput id="dateinput" (focus)="picker.open()" formControlName="dateOfBirth"
+                        [matDatepicker]="picker" placeholder="mm/dd/yyyy" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class=addressgroup>
+            <h1 class=space>Address</h1>
+            <div id="btngrp">
+                <div style="margin-top: 5px"></div>
+                <button class="btn btn-primary" type="button" style="margin-right: 25px;" (click)="addAddress()">Add</button>
+                <button class="btn btn-primary" type="button" (click)="removeAddress()">Remove</button>
+                <div style="margin-bottom: 5px"></div>
+            </div>
+            <div formArrayName="addressess" *ngFor="let address of getAddress().controls;let i=index">
+                <div [formGroupName]="i">
+                    <div>
+                        <p class=space><mat-checkbox (change)="setCurrIndex($event,i)" ></mat-checkbox></p>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for="addressTypetext" class=space>Address Type</mat-label>
+                        <mat-form-field>
+                            <input type=text class=textbox matInput formControlName="addressType" maxlength="15"
+                                size="20">
+                        </mat-form-field>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for="streettext" class=space>Street</mat-label>
+                        <mat-form-field>
+                            <input type=text class=textbox matInput formControlName="street" maxlength="15"
+                                size="20">
+                        </mat-form-field>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for="citytext" class=space>City</mat-label>
+                        <mat-form-field>
+                            <input type=text class=textbox matInput formControlName="city" maxlength="15" size="20">
+                        </mat-form-field>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for=statetext class=space>State</mat-label>
+                        <mat-form-field>
+                            <mat-select formControlName="state" class="statetext" appearance=outline>
+                                <mat-option [value]=0 disabled>None</mat-option>
+                                <mat-option *ngFor="let item of states" [value]="item.id">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for="ziptext" class=space>Zip</mat-label>
+                        <mat-form-field>
+                            <input type=number class=textbox matInput formControlName="zip" maxlength="5" size="7">
+                        </mat-form-field>
+                    </div>
+                    <div class="nigroup">
+                        <mat-label for=countrytext class=space>Country</mat-label>
+                        <mat-form-field>
+                            <mat-select formControlName="country" class="countrytext" appearance=outline>
+                                <mat-option [value]=0 disabled>None</mat-option>
+                                <mat-option *ngFor="let item of countries" [value]="item.id">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type=submit mat-raised-button color="primary" >Save</button>
+    </form>
+</div>
